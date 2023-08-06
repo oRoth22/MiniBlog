@@ -1,6 +1,39 @@
+#logo{
+    width: 4vw;
+    height: 3vh;
+}
+
+#imglogo{
+    width: 12vw;
+    height: 29vh;
+    position: relative;
+    bottom: 13vh;
+}
+
 #text{
-    width: 65vw;
+    width: 80vw;
     padding-top: 3rem;
     font-size: 2.5vh;
     text-align: justify;
+}
+
+#FotoAlta{
+    width: 100%;
+    height: 90%;
+}
+
+#TextAlto{
+    display: flex;
+    justify-content: center;
+}
+
+#RodaPe{
+    padding: 2vh;
+    height: 12vh;
+    background-color: #D6D6D6;
+}
+
+h1#Footer{
+    font-size: 3vh;
+    padding-top: 3vh;
 }
