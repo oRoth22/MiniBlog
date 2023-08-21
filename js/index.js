@@ -21,11 +21,49 @@ const ApiBlog = async () => {
     const date = await resp.json();
     console.log(date);
 
-    document.querySelector("#title0").innerHTML = date[0].title;
-    document.querySelector("#title1").innerHTML = date[3].title;
-    document.querySelector("#title2").innerHTML = date[2].title;
-    document.querySelector("#title3").innerHTML = date[4].title;
-    document.querySelector("#title4").innerHTML = date[1].title;
-    document.querySelector("#title5").innerHTML = date[5].title;
+    const postagensExistentes = 6;
+    
+    for (let i = 0; i < postagensExistentes; i++) {
+      const imagem = document.querySelector(`#imagem${i}`);
+      const Title = document.querySelector(`#title${i}`);
+    
+      if (date[i]) {
+        imagem.src = `./imagens/posts/${i}.jpg`;
+        Title.innerHTML = date[i].title;
+      }
+    }
+
+    const buttons = document.querySelectorAll(".AbrirNoti");
+    buttons.forEach((button, i) => {
+      button.addEventListener("click", function () {
+        AbrirNoti(date[i], i); 
+      });
+    });
+
+    return date;
+};
+
+function AbrirNoti(contDate, idImagem) {
+
+    document.getElementById("HomeNoticias").style.display = "none";
+    document.getElementById("CardNotiAberta").style.display = "block";
+    
+    // Atualiza o conteúdo da notícia selecionada
+    const image = document.getElementById("NotiFoto");
+    const Titulo = document.getElementById("tituloNoticia");
+    const Descricao = document.getElementById("descriNoticia");
+  
+    image.src = `./imagens/posts/${idImagem}.jpg`;
+    Titulo.textContent = contDate.title;
+    Descricao.textContent = contDate.description;
+
+  };
+
+  function VoltaHome() {
+    const newsSection = document.getElementById("HomeNoticias");
+    const insideNewsSection = document.getElementById("CardNotiAberta");
+    newsSection.style.display = "block";
+    insideNewsSection.style.display = "none";
 }
 ApiBlog();
+
